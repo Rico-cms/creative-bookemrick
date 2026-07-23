@@ -1158,13 +1158,28 @@ main {
 .chat-brief,
 .chat-suggestions {
   display: flex;
-  gap: .5rem;
+  gap: .38rem;
   overflow-x: auto;
 }
 
-.chat-brief { padding: .85rem 1rem 0; }
+.chat-brief {
+  padding: .72rem 1rem 0;
+  align-items: center;
+}
 
-.chat-brief span,
+.chat-brief span {
+  flex: 0 0 auto;
+  border: 1.5px solid rgba(23, 18, 13, .34);
+  border-radius: 999px;
+  background: rgba(255,255,255,.64);
+  padding: .28rem .48rem;
+  color: rgba(23, 18, 13, .68);
+  box-shadow: none;
+  font: 800 .5rem "Plus Jakarta Sans", system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+}
+
 .chat-suggestions button {
   flex: 0 0 auto;
   border: 2px solid var(--ink);
