@@ -67,9 +67,9 @@ function normalizeQuestion(text){
 
 function answerQuestion(question){
   const q=normalizeQuestion(question);
-  if(!q)return {source:"local",text:"Pose-moi une question directe : profil, projets, recrutement, UX/UI, gestion de projet ou contact. Je te réponds court, clair, utile."};
+  if(!q)return {source:"local",text:"Posez une question directe : profil, projets, recrutement, UX/UI, gestion de projet ou contact. Nia répond de façon courte, claire et utile."};
   if(q.includes("pina colada")||q.includes("pinacolada")||q.includes("piña colada")){
-    return {source:"local",text:"Voici une recette simple de piña colada pour 1 verre.\n\n**Ingrédients**\n- 60 ml de rhum blanc\n- 90 ml de jus d’ananas\n- 30 ml de crème de coco\n- Une poignée de glaçons\n- Optionnel : tranche d’ananas ou cerise pour décorer\n\n**Préparation**\n- Mets le rhum, le jus d’ananas, la crème de coco et les glaçons dans un blender.\n- Mixe jusqu’à obtenir une texture lisse et légèrement mousseuse.\n- Verse dans un grand verre, puis ajoute la décoration si tu veux.\n\nVersion sans alcool : retire le rhum et ajoute un peu plus de jus d’ananas ou de lait de coco. Simple, tropical, efficace."};
+    return {source:"local",text:"Voici une recette simple de piña colada pour 1 verre.\n\n**Ingrédients**\n- 60 ml de rhum blanc\n- 90 ml de jus d’ananas\n- 30 ml de crème de coco\n- Une poignée de glaçons\n- Optionnel : tranche d’ananas ou cerise pour décorer\n\n**Préparation**\n- Mettez le rhum, le jus d’ananas, la crème de coco et les glaçons dans un blender.\n- Mixez jusqu’à obtenir une texture lisse et légèrement mousseuse.\n- Versez dans un grand verre, puis ajoutez la décoration si besoin.\n\nVersion sans alcool : retirer le rhum et ajouter un peu plus de jus d’ananas ou de lait de coco. Simple, tropical, efficace."};
   }
   if(q.includes("golden ratio")||q.includes("ratio d or")||q.includes("nombre d or")||q.includes("section doree")||q.includes("proportion doree")){
     return {source:"local",text:"**Le golden ratio, ou nombre d’or, vaut environ 1,618.**\n\nC’est une proportion qui aide à créer un rapport équilibré entre deux tailles : par exemple un grand bloc et un bloc plus petit.\n\n- En design, il peut guider la taille des titres, des colonnes, des images ou des marges.\n- Il ne remplace pas le jugement : il sert surtout de repère pour composer avec harmonie.\n- Dans le travail d’Emrick, l’idée se retrouve dans la hiérarchie visuelle, les grands contrastes de taille, les espaces négatifs et la façon de guider le regard.\n\nEn clair : Emrick ne l’utilise pas comme une formule magique, mais comme une logique de proportion pour rendre une interface plus lisible et plus agréable."};
@@ -81,16 +81,16 @@ function answerQuestion(question){
     return {source:"local",text:"Pourquoi le recruter : parce qu’il ne reste pas coincé dans une seule case. Il peut cadrer un besoin, parler métier, organiser un workflow, challenger une interface et garder le projet orienté résultat. C’est rare chez les profils purement design ou purement gestion."};
   }
   if(q.includes("niveau")||q.includes("preuve")||q.includes("meilleur projet")||q.includes("projet prouve")||q.includes("projet fort")){
-    return {source:"local",text:"Le projet le plus démonstratif dépend de ce que tu veux évaluer :\n\n- **Jalo Logistics** montre le pilotage, la transformation digitale et la compréhension métier.\n- **PortfolioLens** montre une approche produit orientée diagnostic et décision.\n- **Africa Digital Pulse** montre la capacité à transformer une veille dense en expérience claire.\n- **Skillsmaster** montre le goût pour l’apprentissage interactif.\n\nLa force d’Emrick se lit dans cette combinaison : cadrage, design, livraison."};
+    return {source:"local",text:"Le projet le plus démonstratif dépend de l’angle d’évaluation :\n\n- **Jalo Logistics** montre le pilotage, la transformation digitale et la compréhension métier.\n- **PortfolioLens** montre une approche produit orientée diagnostic et décision.\n- **Africa Digital Pulse** montre la capacité à transformer une veille dense en expérience claire.\n- **Skillsmaster** montre le goût pour l’apprentissage interactif.\n\nLa force d’Emrick se lit dans cette combinaison : cadrage, design, livraison."};
   }
   if(q.includes("bonjour")||q.includes("salut")||q.includes("hello")||q.includes("hey")){
-    return {source:"local",text:"Salut — je suis Nia. Je peux te faire gagner du temps : demande-moi son pitch, ses projets les plus solides, pourquoi le recruter, ou comment le contacter."};
+    return {source:"local",text:"Salut — je suis Nia. Je peux aider à lire rapidement son pitch, ses projets les plus solides, ses arguments de recrutement ou ses coordonnées."};
   }
   if(q.includes("disponible")||q.includes("availability")||q.includes("recrute")||q.includes("mission")||q.includes("freelance")){
     return {source:"local",text:"Oui. Emrick est basé à Abidjan et ouvert à des opportunités où il peut structurer, piloter et améliorer des produits ou systèmes digitaux. Le bon terrain pour lui : projet ambitieux, besoin flou, équipe à aligner, résultat à livrer."};
   }
   if(q.includes("contact")||q.includes("email")||q.includes("mail")||q.includes("telephone")||q.includes("appel")||q.includes("rdv")||q.includes("creneau")){
-    return {source:"local",text:"Contact direct : dahissihogabriel@gmail.com. Téléphone : +225 05 96 48 93 43. GitHub : https://github.com/rico-cms. Le plus simple : utiliser le bouton de réservation du site si tu veux cadrer un échange proprement."};
+    return {source:"local",text:"Contact direct : dahissihogabriel@gmail.com. Téléphone : +225 05 96 48 93 43. GitHub : https://github.com/rico-cms. Le plus simple : utiliser le bouton de réservation du site pour cadrer un échange proprement."};
   }
   if((q.includes("lequel")||q.includes("quel projet")||q.includes("projet"))&&(q.includes("ux")||q.includes("ui")||q.includes("produit")||q.includes("product"))&&isAboutProfile(q)){
     return {source:"local",text:"Pour l’UX/UI, regarde surtout **PortfolioLens**, **Habi**, **Le Petit Nokoué** dans son parcours, et **L’Odyssée du Code** pour l’interaction. Ce sont les projets qui montrent le mieux sa capacité à clarifier une expérience, pas seulement à l’habiller."};
@@ -211,7 +211,7 @@ function completePossiblyTruncatedAnswer(answer){
   const text=String(answer||"").trim();
   if(!text)return "Je n’ai pas réussi à formuler une réponse utile.";
   if(text.length<80||/[.!?…)]$/.test(text))return text;
-  return `${text}\n\nJe complète pour éviter une réponse coupée : retiens surtout l’idée principale, puis applique-la étape par étape. Si tu veux, je peux aussi te refaire cette réponse en version courte, détaillée ou actionnable.`;
+  return `${text}\n\nJe complète pour éviter une réponse coupée : il faut surtout retenir l’idée principale, puis l’appliquer étape par étape. Une reformulation courte, détaillée ou actionnable peut ensuite être demandée.`;
 }
 
 async function askLlm(question){
@@ -253,7 +253,7 @@ async function askChat(question){
   }catch(error){
     console.warn("Nia LLM unavailable",error);
     typing.className="bot";
-    typing.innerHTML=formatBotAnswer("Le LLM ne répond pas pour le moment. Je reste utile en local : demande-moi son pitch, pourquoi le recruter, ses projets forts ou ses coordonnées.");
+    typing.innerHTML=formatBotAnswer("Le LLM ne répond pas pour le moment. Je reste utile en local : pitch, arguments de recrutement, projets forts et coordonnées restent disponibles.");
     renderSuggestions(["Pitch en 20 secondes","Pourquoi le recruter ?","Comment le contacter ?"]);
   }
   if(chatHistory.length>10)chatHistory.splice(0,chatHistory.length-10);
