@@ -245,6 +245,36 @@
     </section>
   </main>
 
+  <section class="mini-chat" aria-live="polite">
+    <button class="chat-toggle magnet" type="button" aria-expanded="false" aria-controls="chat-panel"><span>Nia</span><b></b></button>
+    <div class="chat-panel" id="chat-panel" aria-hidden="true">
+      <div class="chat-head">
+        <div><span>Assistant stratégique d’Emrick</span><strong>Nia</strong></div>
+        <button class="chat-close" type="button" aria-label="Fermer le chatbot">×</button>
+      </div>
+      <div class="chat-brief">
+        <span>Profil</span>
+        <span>Projets</span>
+        <span>Design</span>
+        <span>PM</span>
+      </div>
+      <div class="chat-messages" id="chat-messages">
+        <p class="bot">Je suis Nia. Je peux t’aider à comprendre vite le profil d’Emrick, ses projets, sa méthode de pilotage, son approche design ou répondre à une question plus large liée au produit, à l’UX et au project management.</p>
+      </div>
+      <div class="chat-suggestions" aria-label="Questions suggérées">
+        <button type="button">Pitch en 20 secondes</button>
+        <button type="button">Pourquoi le recruter ?</button>
+        <button type="button">Quel projet prouve son niveau ?</button>
+        <button type="button">C’est quoi le golden ratio ?</button>
+      </div>
+      <form class="chat-form" id="chat-form">
+        <label class="sr-only" for="chat-input">Votre question</label>
+        <input id="chat-input" name="question" type="text" autocomplete="off" placeholder="Demande à Nia…" required>
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+  </section>
+
   <script src="emrick-creative-framer.js" defer></script>
 </body>
 </html>
