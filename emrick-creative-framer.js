@@ -56,6 +56,12 @@ const chatHistory=[];
 const profileIntentWords=["gabriel","emrick","il ","lui","son ","ses ","profil","portfolio","cv","experience","parcours","competence","expertise"];
 const defaultSuggestions=["Pitch en 20 secondes","Pourquoi le recruter ?","Quel projet prouve son niveau ?","Comment le contacter ?"];
 let suggestionsRendered=false;
+const conversationState={
+  summary:"",
+  currentTopic:"",
+  lastIntent:"",
+  turns:0
+};
 
 function isAboutProfile(q){
   return profileIntentWords.some(word=>q.includes(word));
@@ -63,6 +69,60 @@ function isAboutProfile(q){
 
 function normalizeQuestion(text){
   return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^\w\s+@.]/g," ").replace(/\s+/g," ").trim();
+}
+
+function inferIntent(q){
+  if(q.includes("contact")||q.includes("email")||q.includes("telephone")||q.includes("rdv"))return "contact";
+  if(q.includes("recruter")||q.includes("embaucher")||q.includes("valeur")||q.includes("pourquoi lui"))return "évaluation recrutement";
+  if(q.includes("projet")||q.includes("portfolio")||q.includes("jalo")||q.includes("skillsmaster")||q.includes("pulse")||q.includes("lens"))return "analyse de projet";
+  if(q.includes("ux")||q.includes("ui")||q.includes("design")||q.includes("branding")||q.includes("golden")||q.includes("ratio"))return "conseil design";
+  if(q.includes("gestion")||q.includes("project")||q.includes("workflow")||q.includes("methode")||q.includes("organisation"))return "conseil project management";
+  if(q.includes("cv")||q.includes("parcours")||q.includes("experience")||q.includes("certification"))return "lecture du parcours";
+  return "question générale";
+}
+
+function inferTopic(q,question){
+  const knownTopics=[
+    ["africa digital pulse","Africa Digital Pulse"],
+    ["portfolio lens","PortfolioLens"],
+    ["l odyssee","L’Odyssée du Code"],
+    ["odyssee","L’Odyssée du Code"],
+    ["skillsmaster","Skillsmaster"],
+    ["jalo","Jalo Logistics"],
+    ["habi","Habi"],
+    ["workweek","WorkweekOS"],
+    ["reval","ReVal Africa"],
+    ["plein malin","Le Plein Malin"],
+    ["gabrielos","Gabrielos"],
+    ["gaming cv","Gaming CV"],
+    ["golden ratio","golden ratio"],
+    ["nombre d or","golden ratio"],
+    ["ux","UX/UI design"],
+    ["ui","UX/UI design"],
+    ["branding","branding"],
+    ["gestion de projet","gestion de projet"],
+    ["project management","gestion de projet"],
+    ["workflow","workflows"],
+    ["certification","certifications"],
+    ["parcours","parcours d’Emrick"],
+    ["contact","contact"]
+  ];
+  const found=knownTopics.find(([needle])=>q.includes(needle));
+  if(found)return found[1];
+  if(q.includes("ça")||q.includes("cela")||q.includes("ce projet")||q.includes("lui")||q.includes("developpe")||q.includes("développe")||q.includes("et ensuite")||q.includes("pourquoi")){
+    return conversationState.currentTopic || "sujet précédent";
+  }
+  return question.length>60 ? `${question.slice(0,57)}…` : question;
+}
+
+function updateConversationState(question,answer){
+  const q=normalizeQuestion(question);
+  const topic=inferTopic(q,question);
+  const intent=inferIntent(q);
+  conversationState.turns+=1;
+  conversationState.currentTopic=topic || conversationState.currentTopic;
+  conversationState.lastIntent=intent;
+  conversationState.summary=`Conversation en cours : le visiteur explore ${conversationState.currentTopic || "le profil d’Emrick"} avec une intention de ${conversationState.lastIntent}. Dernière réponse : ${String(answer||"").replace(/\s+/g," ").slice(0,240)}`;
 }
 
 function answerQuestion(question){
@@ -223,7 +283,8 @@ async function askLlm(question){
     signal:controller.signal,
     body:JSON.stringify({
       message:question,
-      history:chatHistory.slice(-8)
+      history:chatHistory.slice(-14),
+      conversationState
     })
   }).finally(()=>clearTimeout(timeout));
   if(!response.ok)throw new Error(`LLM request failed: ${response.status}`);
@@ -237,6 +298,7 @@ async function askChat(question){
   const answer=answerQuestion(question);
   if(answer.source==="local"){
     chatHistory.push({role:"user",content:question},{role:"assistant",content:answer.text});
+    updateConversationState(question,answer.text);
     setTimeout(()=>{
       addMessage(answer.text,"bot");
       renderSuggestions(nextSuggestions(question));
@@ -249,14 +311,16 @@ async function askChat(question){
     typing.className="bot";
     typing.innerHTML=formatBotAnswer(llmAnswer);
     chatHistory.push({role:"user",content:question},{role:"assistant",content:llmAnswer});
+    updateConversationState(question,llmAnswer);
     renderSuggestions(nextSuggestions(question));
   }catch(error){
     console.warn("Nia LLM unavailable",error);
     typing.className="bot";
     typing.innerHTML=formatBotAnswer("Le LLM ne répond pas pour le moment. Je reste utile en local : pitch, arguments de recrutement, projets forts et coordonnées restent disponibles.");
+    updateConversationState(question,"Réponse LLM indisponible, bascule vers les informations locales.");
     renderSuggestions(["Pitch en 20 secondes","Pourquoi le recruter ?","Comment le contacter ?"]);
   }
-  if(chatHistory.length>10)chatHistory.splice(0,chatHistory.length-10);
+  if(chatHistory.length>18)chatHistory.splice(0,chatHistory.length-18);
 }
 
 if(miniChat&&chatToggle&&chatPanel&&chatClose&&chatForm&&chatInput){
