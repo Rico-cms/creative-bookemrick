@@ -62,6 +62,7 @@ const conversationState={
   lastIntent:"",
   turns:0
 };
+const profileLocationWords=["emrick","gabriel","il","lui","son","profil","base","basé","localisation","habite","situe","travaille","parcours"];
 
 function isAboutProfile(q){
   return profileIntentWords.some(word=>q.includes(word));
@@ -149,6 +150,9 @@ function answerQuestion(question){
   if(q.includes("disponible")||q.includes("availability")||q.includes("recrute")||q.includes("mission")||q.includes("freelance")){
     return {source:"local",text:"Oui. Emrick est basé à Abidjan et ouvert à des opportunités où il peut structurer, piloter et améliorer des produits ou systèmes digitaux. Le bon terrain pour lui : projet ambitieux, besoin flou, équipe à aligner, résultat à livrer."};
   }
+  if((q.includes("negroni")||q.includes("cocktail")||q.includes("bar")||q.includes("restaurant")||q.includes("boire"))&&(q.includes("abidjan")||q.includes("cotonou"))){
+    return {source:"llm",text:"Demande générale contextualisée."};
+  }
   if(q.includes("contact")||q.includes("email")||q.includes("mail")||q.includes("telephone")||q.includes("appel")||q.includes("rdv")||q.includes("creneau")){
     return {source:"local",text:"Contact direct : dahissihogabriel@gmail.com. Téléphone : +225 05 96 48 93 43. GitHub : https://github.com/rico-cms. Le plus simple : utiliser le bouton de réservation du site pour cadrer un échange proprement."};
   }
@@ -170,7 +174,7 @@ function answerQuestion(question){
   if(q.includes("certification")||q.includes("certificat")||q.includes("diplome")||q.includes("formation")){
     return {source:"local",text:"Il a des certifications en IA, project/product management, agile, marketing digital, design web, Git/GitHub et Adobe Photoshop. Ça raconte surtout une chose : il apprend en continu pour renforcer son terrain d’action."};
   }
-  if(q.includes("localisation")||q.includes("ville")||q.includes("abidjan")||q.includes("cotonou")||q.includes("ou est")){
+  if((q.includes("localisation")||q.includes("ville")||q.includes("abidjan")||q.includes("cotonou")||q.includes("ou est"))&&profileLocationWords.some(word=>q.includes(word))){
     return {source:"local",text:"Emrick est basé à Abidjan, avec une trajectoire entre Abidjan et Cotonou. Son terrain naturel : projets digitaux et créatifs en Afrique de l’Ouest."};
   }
   if(q.includes("gestion de projet")||q.includes("project management")||q.includes("workflow")||q.includes("methode")||q.includes("organisation")){
