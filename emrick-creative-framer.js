@@ -1,6 +1,195 @@
 const root=document.documentElement;
 let pointerFrame=null;
 
+const themeSwitch=document.querySelector(".theme-switch");
+const langSwitch=document.querySelector(".lang-switch");
+const translations={
+  "Aller au contenu":"Skip to content",
+  "Projets":"Projects",
+  "Méthode":"Method",
+  "Parcours":"Journey",
+  "Disponible · 2026":"Available · 2026",
+  "Clair":"Light",
+  "Basé à Abidjan Disponible pour de nouveaux défis":"Based in Abidjan Open to new challenges",
+  "Du besoin métier":"From business need",
+  "au produit":"to the",
+  "livré.":"delivered product.",
+  "Je travaille là où les équipes métier, les utilisateurs et la technologie doivent enfin parler la même langue.":"I work where business teams, users and technology must finally speak the same language.",
+  "Voir les projets":"View projects",
+  "Écrire un message":"Get in touch",
+  "cahier des charges consolidé":"consolidated requirements document",
+  "prototype métier interactif":"interactive business prototype",
+  "un même système logistique à rendre clair":"one logistics system to make clear",
+  "Atelier → CDC → Prototype → COPIL":"Workshop → requirements → prototype → steering committee",
+  "10 pays":"10 countries",
+  "Portée":"Scope",
+  "SI logistique régional, interfacé à l’ERP IRIUM.":"Regional logistics information system connected to the IRIUM ERP.",
+  "Bénin, Togo, Sénégal… visibilité opérationnelle multi-pays.":"Benin, Togo, Senegal… multi-country operational visibility.",
+  "Cadrage":"Scoping",
+  "73 exigences":"73 requirements",
+  "Réparties sur 9 modules, dans un plan projet Excel à 10 onglets.":"Structured across 9 modules in a 10-tab Excel project plan.",
+  "Gouvernance":"Governance",
+  "35 besoins":"35 needs",
+  "Consolidés auprès de 5 directions, puis transformés en CDC V2/V3.":"Consolidated across 5 departments, then turned into V2/V3 requirements.",
+  "01 · Projets récents":"01 · Recent projects",
+  "Des besoins devenus produits.":"Needs turned into products.",
+  "Chaque projet part d’un usage concret, devient un système compréhensible et va jusqu’à une expérience réellement accessible.":"Each project starts with a real use case, becomes an understandable system and ends as an accessible experience.",
+  "Réservation · SaaS":"Booking · SaaS",
+  "De TrouveMonCréneau à Slotly":"From TrouveMonCréneau to Slotly",
+  "Un système multi-boutiques pour réserver, organiser l’activité et piloter les rendez-vous.":"A multi-location system to book, organise operations and manage appointments.",
+  "Veille · média digital":"Intelligence · digital media",
+  "Lire les signaux du continent":"Reading the continent's signals",
+  "Une veille transformée en expérience éditoriale claire, vivante et immédiatement exploitable.":"Market intelligence turned into a clear, lively and immediately actionable editorial experience.",
+  "Learning · produit bilingue":"Learning · bilingual product",
+  "Apprendre sans se perdre":"Learn without getting lost",
+  "Une expérience quotidienne bilingue faite de micro-leçons, découvertes, quiz et progression personnelle.":"A bilingual daily experience built around micro-lessons, discoveries, quizzes and personal progress.",
+  "Visiter ↗":"Visit ↗",
+  "02 · Méthode":"02 · Method",
+  "Comprendre. Structurer. Faire avancer.":"Understand. Structure. Move forward.",
+  "Trois responsabilités pour conduire un besoin complexe jusqu’à un produit clair, utilisable et livrable.":"Three responsibilities to turn a complex need into a clear, usable and deliverable product.",
+  "Comprendre":"Understand",
+  "Entrer dans le métier, observer les processus, écouter les utilisateurs et identifier les contraintes qui se cachent derrière la demande initiale.":"Step into the business, observe processes, listen to users and uncover the constraints behind the initial request.",
+  "Structurer":"Structure",
+  "Transformer le flou en besoins explicites, décisions, priorités, parcours, responsabilités et trajectoire de livraison.":"Turn ambiguity into explicit needs, decisions, priorities, journeys, ownership and a delivery path.",
+  "Faire avancer":"Move forward",
+  "Aligner les personnes, arbitrer, rendre les décisions visibles et accompagner les équipes jusqu’à un produit réellement utilisable.":"Align people, make trade-offs visible and support teams all the way to a genuinely usable product.",
+  "03 · Vision":"03 · Vision",
+  "La polyvalence n’est pas le message. C’est le moyen.":"Versatility is not the message. It is the means.",
+  "Mon expérience en UX, produit, design et développement me permet de comprendre plusieurs côtés d’un même problème — sans perdre de vue ma responsabilité principale : faire aboutir le projet.":"My experience across UX, product, design and development lets me understand several sides of the same problem without losing sight of my main responsibility: getting the project delivered.",
+  "Cette culture transverse m’aide à traduire les attentes métier, challenger les parcours, dialoguer avec les équipes techniques et rendre les arbitrages compréhensibles pour les décideurs.":"This cross-functional culture helps me translate business expectations, challenge journeys, work with technical teams and make trade-offs clear to decision-makers.",
+  "04 · Expériences choisies":"04 · Selected experience",
+  "La promesse, mise à l’épreuve du terrain.":"The promise, proven in the field.",
+  "Des missions où comprendre les métiers, structurer les décisions et coordonner les acteurs a permis de rendre des systèmes complexes plus clairs.":"Assignments where understanding the business, structuring decisions and coordinating stakeholders made complex systems clearer.",
+  "Pilotage de bout en bout : besoins métier, cahiers des charges, prototypes, dashboards exécutifs, COPIL et cohérence multi-modules.":"End-to-end delivery: business needs, requirements, prototypes, executive dashboards, steering committees and multi-module consistency.",
+  "Campagnes promotionnelles et pédagogiques : direction artistique, accroches, visuels illustrés et appels à l’action.":"Promotional and educational campaigns: art direction, messaging, illustrated assets and calls to action.",
+  "Moderniser les danses royales béninoises sans perdre l’ancrage historique.":"Modernising Benin's royal dances without losing their historical roots.",
+  "Produire des assets cohérents pour nourrir la présence digitale et print.":"Creating consistent assets for digital and print presence.",
+  "Tests UX, analyse des frictions, rapports détaillés et design system.":"UX testing, friction analysis, detailed reports and design systems.",
+  "Interfaces web rapides, lisibles et adaptées à toutes les tailles d’écran.":"Fast, readable web interfaces adapted to every screen size.",
+  "05 · Parcours":"05 · Journey",
+  "Un parcours construit pour faire le lien.":"A journey built to connect the dots.",
+  "Chaque étape a renforcé ma capacité à dialoguer avec les métiers, les utilisateurs, les créatifs et les équipes techniques.":"Every step strengthened my ability to work with business teams, users, creatives and technical teams.",
+  "Août 2025 — présent":"Aug. 2025 — present",
+  "Mai 2025 — déc. 2025":"May 2025 — Dec. 2025",
+  "Mars 2023 — fév. 2025":"Mar. 2023 — Feb. 2025",
+  "Jan. 2022 — déc. 2023":"Jan. 2022 — Dec. 2023",
+  "Juil. — nov. 2021":"Jul. — Nov. 2021",
+  "Chef de Projet Digital & UX/UI Designer : e-Track, SOFTLOGIS V3.0, ERP IRIUM, COPIL, dashboards exécutifs.":"Digital Project Manager & UX/UI Designer: e-Track, SOFTLOGIS V3.0, IRIUM ERP, steering committees and executive dashboards.",
+  "Designer créatif consultant pour Zepargn : campagnes promotionnelles, pédagogiques et commerciales.":"Creative design consultant for Zepargn: promotional, educational and commercial campaigns.",
+  "Directeur artistique consultant : CDCRB, Africaine Vie Bénin, The Busy Bee School.":"Consulting art director: CDCRB, Africaine Vie Benin and The Busy Bee School.",
+  "Product Designer pour Le Petit Nokoué : audits UX, tests, rapports et design system.":"Product Designer for Le Petit Nokoué: UX audits, testing, reports and design system.",
+  "Premières intégrations frontend : HTML, CSS, JavaScript, responsive et fidélité visuelle.":"Early frontend work: HTML, CSS, JavaScript, responsive design and visual accuracy.",
+  "06 · Laboratoire":"06 · Lab",
+  "Projets personnels":"Personal projects",
+  "Le terrain où les idées deviennent des interfaces.":"Where ideas become interfaces.",
+  "Des terrains d’essai autour de l’audit, de l’apprentissage, de l’organisation, de la mobilité et des usages quotidiens.":"Experiments around auditing, learning, organisation, mobility and everyday use.",
+  "Ouvrir le projet ↗":"Open project ↗",
+  "Une idée d’outil pour analyser, clarifier et challenger la présentation d’un portfolio.":"A tool concept for analysing, clarifying and challenging how a portfolio is presented.",
+  "Un projet autour de l’apprentissage du code par progression, interaction et narration.":"A project for learning code through progression, interaction and storytelling.",
+  "Habitat · communauté":"Housing · community",
+  "Un concept d’application autour du cohousing, de la vie partagée et de la coordination.":"An app concept for cohousing, shared living and coordination.",
+  "Organisation · OS":"Organisation · OS",
+  "Un système pensé pour structurer la semaine, les priorités et les routines de travail.":"A system designed to structure the week, priorities and work routines.",
+  "Économie circulaire":"Circular economy",
+  "Une piste produit autour de la revalorisation et de la seconde vie des équipements.":"A product concept for reuse and extending the life of equipment.",
+  "Mobilité · économie":"Mobility · savings",
+  "Un projet orienté usage quotidien, optimisation et décision rapide.":"A project focused on everyday use, optimisation and faster decisions.",
+  "Une exploration d’assistance, de méthode et de structure pour chefs de projet.":"An exploration of assistance, methods and structure for project managers.",
+  "Système personnel":"Personal system",
+  "Une expérimentation autour d’un univers personnel, d’outils et de logique d’interface.":"An experiment around a personal universe, tools and interface logic.",
+  "Un format CV plus interactif, pensé comme une expérience plutôt qu’une simple page.":"A more interactive CV designed as an experience rather than a static page.",
+  "Soft skills · jeu":"Soft skills · game",
+  "Un projet pour faire pratiquer les compétences comportementales par l’interaction.":"A project for practising behavioural skills through interaction.",
+  "07 · Apprendre encore":"07 · Keep learning",
+  "Certifications, outils et curiosité structurée.":"Certifications, tools and structured curiosity.",
+  "Des acquis complémentaires en gestion de projet, product management, IA, marketing digital, design web et outils créatifs.":"Complementary skills in project and product management, AI, digital marketing, web design and creative tools.",
+  "Gestion & IA":"Management & AI",
+  "Responsable marketing, digital advertising, Google Ads Search et fondamentaux du digital.":"Marketing management, digital advertising, Google Ads Search and digital fundamentals.",
+  "Projet à cadrer ?":"A project to scope?",
+  "contact direct":"direct contact",
+  "Un besoin métier complexe à transformer en produit clair et livrable ?":"A complex business need to turn into a clear, deliverable product?",
+  "Réserver un créneau":"Book a call",
+  "Assistant stratégique d’Emrick":"Emrick's strategic assistant",
+  "Fermer le chatbot":"Close chatbot",
+  "Je suis Nia. Ce module aide les visiteurs à comprendre rapidement le profil d’Emrick, ses projets, sa méthode de pilotage, son approche design et les sujets liés au produit, à l’UX ou au project management.":"I’m Nia. I help visitors quickly understand Emrick's profile, projects, delivery method, design approach and topics related to product, UX and project management.",
+  "Pitch en 20 secondes":"20-second pitch",
+  "Pourquoi le recruter ?":"Why hire him?",
+  "Quel projet prouve son niveau ?":"Which project best proves his level?",
+  "C’est quoi le golden ratio ?":"What is the golden ratio?",
+  "Poser une question à Nia…":"Ask Nia a question…",
+  "Envoyer":"Send"
+};
+
+const cleanText=value=>String(value||"").replace(/\s+/g," ").trim();
+const translatableNodes=[...document.querySelectorAll("body *")].filter(element=>{
+  if(element.children.length)return false;
+  const french=cleanText(element.textContent);
+  if(!translations[french])return false;
+  element.dataset.frText=french;
+  element.dataset.enText=translations[french];
+  return true;
+});
+const helloAvailability=document.querySelector(".hello-card p");
+if(helloAvailability){
+  helloAvailability.dataset.frHtml="Basé à Abidjan<br>Disponible pour de nouveaux défis";
+  helloAvailability.dataset.enHtml="Based in Abidjan<br>Open to new challenges";
+}
+
+let currentLanguage=localStorage.getItem("emrick-language")==="en"?"en":"fr";
+let currentTheme=localStorage.getItem("emrick-theme")==="light"?"light":"dark";
+
+function updateDisplayControls(){
+  const light=currentTheme==="light";
+  const english=currentLanguage==="en";
+  document.body.classList.toggle("light-mode",light);
+  document.documentElement.lang=currentLanguage;
+  if(themeSwitch){
+    themeSwitch.setAttribute("aria-pressed",String(light));
+    themeSwitch.setAttribute("aria-label",english?(light?"Switch to dark theme":"Switch to light theme"):(light?"Activer le thème sombre":"Activer le thème clair"));
+    const label=themeSwitch.querySelector("b");
+    if(label)label.textContent=english?(light?"Light":"Dark"):(light?"Clair":"Sombre");
+  }
+  if(langSwitch){
+    langSwitch.textContent=english?"FR":"EN";
+    langSwitch.setAttribute("aria-pressed",String(english));
+    langSwitch.setAttribute("aria-label",english?"Afficher le site en français":"Afficher le site en anglais");
+  }
+}
+
+function applyLanguage(language){
+  currentLanguage=language;
+  translatableNodes.forEach(element=>{
+    element.textContent=language==="en"?element.dataset.enText:element.dataset.frText;
+  });
+  if(helloAvailability)helloAvailability.innerHTML=language==="en"?helloAvailability.dataset.enHtml:helloAvailability.dataset.frHtml;
+  localStorage.setItem("emrick-language",language);
+  updateDisplayControls();
+}
+
+themeSwitch?.addEventListener("click",()=>{
+  currentTheme=currentTheme==="light"?"dark":"light";
+  localStorage.setItem("emrick-theme",currentTheme);
+  updateDisplayControls();
+});
+
+langSwitch?.addEventListener("click",()=>applyLanguage(currentLanguage==="fr"?"en":"fr"));
+applyLanguage(currentLanguage);
+
+function alignHashTarget(){
+  if(!location.hash)return;
+  const target=document.querySelector(location.hash);
+  if(!target)return;
+  requestAnimationFrame(()=>target.scrollIntoView({block:"start"}));
+}
+
+addEventListener("load",()=>{
+  if(document.fonts?.ready){
+    document.fonts.ready.then(alignHashTarget);
+    return;
+  }
+  alignHashTarget();
+},{once:true});
+
 addEventListener("pointermove",event=>{
   if(pointerFrame)return;
   pointerFrame=requestAnimationFrame(()=>{

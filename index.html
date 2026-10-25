@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Gabriel Emrick Dahissiho — Creative Portfolio Concept</title>
-  <meta name="description" content="Concept créatif de portfolio pour Gabriel Emrick Dahissiho, Chef de Projet Digital & UX/UI Designer basé à Abidjan.">
+  <title>Gabriel Emrick Dahissiho — IT Project Manager & Product Builder</title>
+  <meta name="description" content="Portfolio de Gabriel Emrick Dahissiho, IT Project Manager et Product Builder à Abidjan : transformation digitale, UX/UI et produits numériques utiles.">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
   <link rel="canonical" href="https://creative.bookemrick.online/">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="emrick-creative-framer.css">
+  <link rel="stylesheet" href="emrick-creative-framer.css?v=20261025c">
+  <link rel="stylesheet" href="theme-controls.css?v=20261025l">
 </head>
-<body>
+<body class="construction-v3">
   <a class="skip-link" href="#main">Aller au contenu</a>
   <div class="paper-grain" aria-hidden="true"></div>
   <div class="blob blob-a" aria-hidden="true"></div>
@@ -23,27 +24,36 @@
   <header class="topbar">
     <a class="logo" href="#top"><span>GE</span>Gabriel Emrick</a>
     <nav aria-label="Navigation concept">
-      <a href="#vision">Vision</a>
-      <a href="#expertise">Expertise</a>
       <a href="#work">Projets</a>
+      <a href="#expertise">Méthode</a>
       <a href="#parcours">Parcours</a>
+      <a href="#vision">Vision</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div class="display-controls" aria-label="Affichage et langue">
+      <button class="theme-switch" type="button" aria-pressed="false" aria-label="Activer le thème clair"><span aria-hidden="true"></span><b>Clair</b></button>
+      <button class="lang-switch" type="button" aria-pressed="false" aria-label="Afficher le site en anglais">EN</button>
+    </div>
   </header>
 
   <main id="main">
     <section class="opening section" id="top">
+      <div class="site-status" aria-label="Positionnement">
+        <span>IT Project Manager</span>
+        <span>Abidjan · Cotonou</span>
+        <span>Disponible · 2026</span>
+      </div>
       <div class="intro">
         <div class="hero-meta">
-          <p class="tiny">Chef de projet digital · UX/UI designer</p>
+          <p class="tiny">IT Project Manager · Business to delivery</p>
           <div class="hello-card magnet">
             <span class="pin"></span>
             <p>Basé à Abidjan<br>Disponible pour de nouveaux défis</p>
             <strong>+4 ans</strong>
           </div>
         </div>
-        <h1><span>Du besoin métier</span> <span>au produit livré.</span> <em>Sans perdre le sens.</em></h1>
-        <p class="lead">Je fais le lien entre équipes métier, développeurs et décideurs pour transformer des besoins complexes en produits digitaux robustes, lisibles et adoptés sur le terrain.</p>
+        <h1><span>Du besoin métier</span><span class="delivery-line"><b>au produit</b><em>livré.</em></span></h1>
+        <p class="lead">Je travaille là où les équipes métier, les utilisateurs et la technologie doivent enfin parler la même langue.</p>
         <div class="hero-actions">
           <a href="#work">Voir les projets</a>
           <a href="mailto:dahissihogabriel@gmail.com">Écrire un message</a>
@@ -88,17 +98,6 @@
       </div>
     </section>
 
-    <section class="origin section" id="vision">
-      <div class="chapter">01 · Vision</div>
-      <div class="origin-grid">
-        <h2>Je pars du terrain, puis je clarifie ce qui bloque.</h2>
-        <div class="origin-copy magnet">
-          <p>Je suis Gabriel Emrick. Mon terrain se situe là où les besoins métier, les contraintes techniques et l’expérience utilisateur doivent enfin parler la même langue.</p>
-          <p>J’aime transformer un cahier des charges dense en trajectoire lisible : priorités, écrans, gouvernance, planning, rituels et livrables. C’est là que la créativité devient utile.</p>
-        </div>
-      </div>
-    </section>
-
     <section class="proof-strip section" aria-label="Preuves issues du CV">
       <article class="proof-ticket yellow magnet">
         <span>Jalo Logistics</span>
@@ -122,41 +121,100 @@
       </article>
     </section>
 
+    <section class="work recent-work section" id="work">
+      <div class="product-seal" role="img" aria-label="Product Certified by Emrick Dahissiho">
+        <svg viewBox="0 0 180 180" aria-hidden="true">
+          <defs>
+            <path id="seal-product" d="M 42,63 A 58,58 0 0,1 138,63"></path>
+          </defs>
+          <g class="stamp-ink">
+            <circle class="seal-paper" cx="90" cy="90" r="86"></circle>
+            <circle class="seal-ring-outer" cx="90" cy="90" r="81"></circle>
+            <circle class="seal-ring-inner" cx="90" cy="90" r="70"></circle>
+            <text class="seal-curve seal-product"><textPath href="#seal-product" startOffset="50%">PRODUCT</textPath></text>
+            <g class="seal-stars" aria-hidden="true">
+              <path d="M73 55l2.4 5.1 5.6.6-4.1 3.8 1.1 5.5-5-2.7-5 2.7 1.1-5.5-4.1-3.8 5.6-.6z"></path>
+              <path d="M90 51l2.8 5.8 6.4.8-4.7 4.3 1.2 6.3-5.7-3.1-5.7 3.1 1.2-6.3-4.7-4.3 6.4-.8z"></path>
+              <path d="M107 55l2.4 5.1 5.6.6-4.1 3.8 1.1 5.5-5-2.7-5 2.7 1.1-5.5-4.1-3.8 5.6-.6z"></path>
+            </g>
+            <g class="seal-band">
+              <rect x="13" y="73" width="154" height="42" rx="3"></rect>
+              <text x="90" y="103">CERTIFIED</text>
+            </g>
+            <text class="seal-author seal-author-first" x="90" y="132">BY EMRICK</text>
+            <text class="seal-author" x="90" y="147">DAHISSIHO</text>
+          </g>
+        </svg>
+      </div>
+      <div class="chapter">01 · Projets récents</div>
+      <div class="section-head recent-head">
+        <h2>Des besoins devenus produits.</h2>
+        <p>Chaque projet part d’un usage concret, devient un système compréhensible et va jusqu’à une expérience réellement accessible.</p>
+      </div>
+
+      <div class="now-grid" aria-label="Projets récents">
+        <a class="now-card now-slotly" href="https://slotly-live.pages.dev/" target="_blank" rel="noopener noreferrer">
+          <div class="now-topline"><span>Réservation · SaaS</span><b>01</b></div>
+          <div class="now-visual slotly-visual" aria-hidden="true"><span class="slot-month">OCT</span><strong>25</strong><div><i></i><i></i><i></i><i></i><i></i></div></div>
+          <div class="now-copy"><p>De TrouveMonCréneau à Slotly</p><h3>Slotly</h3><span>Un système multi-boutiques pour réserver, organiser l’activité et piloter les rendez-vous.</span></div>
+          <em>Visiter ↗</em>
+        </a>
+        <a class="now-card now-pulse" href="https://pulse.bookemrick.online/" target="_blank" rel="noopener noreferrer">
+          <div class="now-topline"><span>Veille · média digital</span><b>02</b></div>
+          <div class="now-visual pulse-visual" aria-hidden="true"><span>AFRICA</span><strong>DIGITAL<br>PULSE</strong><i></i></div>
+          <div class="now-copy"><p>Lire les signaux du continent</p><h3>Africa Digital Pulse</h3><span>Une veille transformée en expérience éditoriale claire, vivante et immédiatement exploitable.</span></div>
+          <em>Visiter ↗</em>
+        </a>
+        <a class="now-card now-rabbit" href="https://rabbithole.bookemrick.online/" target="_blank" rel="noopener noreferrer">
+          <div class="now-topline"><span>Learning · produit bilingue</span><b>03</b></div>
+          <div class="now-visual rabbit-visual" aria-hidden="true"><span>ONE DISCOVERY A DAY</span><div><i></i><i></i><i></i></div><strong>RABBIT<br>HOLE</strong></div>
+          <div class="now-copy"><p>Apprendre sans se perdre</p><h3>Rabbit Hole</h3><span>Une expérience quotidienne bilingue faite de micro-leçons, découvertes, quiz et progression personnelle.</span></div>
+          <em>Visiter ↗</em>
+        </a>
+      </div>
+    </section>
+
     <section class="expertise section" id="expertise">
-      <div class="chapter">02 · Expertise</div>
+      <div class="chapter">02 · Méthode</div>
       <div class="section-head">
-        <h2>Trois leviers. Un même cap.</h2>
-        <p>Faire avancer les projets sans perdre l’intention : c’est une affaire de clarté, d’usage et de cohérence.</p>
+        <h2>Comprendre. Structurer. Faire avancer.</h2>
+        <p>Trois responsabilités pour conduire un besoin complexe jusqu’à un produit clair, utilisable et livrable.</p>
       </div>
       <div class="table-board">
         <article class="skill-note big magnet">
           <span>01</span>
-          <h3>Gouvernance & transformation digitale</h3>
-          <p>Cadrage, ateliers fonctionnels, planning Gantt, suivi COPIL, coordination partenaires et reporting DG.</p>
+          <h3>Comprendre</h3>
+          <p>Entrer dans le métier, observer les processus, écouter les utilisateurs et identifier les contraintes qui se cachent derrière la demande initiale.</p>
         </article>
         <article class="skill-note magnet">
           <span>02</span>
-          <h3>UX/UI & systèmes métier</h3>
-          <p>Parcours critiques, architecture d’information, prototypes HTML et cohérence multi-modules.</p>
-        </article>
-        <article class="skill-note magnet">
-          <span>03</span>
-          <h3>Branding & direction créative</h3>
-          <p>Identités, campagnes éditoriales, assets digitaux, supports print, newsletters et brochures.</p>
+          <h3>Structurer</h3>
+          <p>Transformer le flou en besoins explicites, décisions, priorités, parcours, responsabilités et trajectoire de livraison.</p>
         </article>
         <article class="skill-note wide magnet">
-          <span>04</span>
-          <h3>Nia · Assistant stratégique</h3>
-          <p>Une couche conversationnelle pensée pour expliquer vite la valeur d’Emrick : profil, projets, recrutement, contact.</p>
+          <span>03</span>
+          <h3>Faire avancer</h3>
+          <p>Aligner les personnes, arbitrer, rendre les décisions visibles et accompagner les équipes jusqu’à un produit réellement utilisable.</p>
         </article>
       </div>
     </section>
 
+    <section class="origin section" id="vision">
+      <div class="chapter">03 · Vision</div>
+      <div class="origin-grid">
+        <h2>La polyvalence n’est pas le message. C’est le moyen.</h2>
+        <div class="origin-copy magnet">
+          <p>Mon expérience en UX, produit, design et développement me permet de comprendre plusieurs côtés d’un même problème — sans perdre de vue ma responsabilité principale : faire aboutir le projet.</p>
+          <p>Cette culture transverse m’aide à traduire les attentes métier, challenger les parcours, dialoguer avec les équipes techniques et rendre les arbitrages compréhensibles pour les décideurs.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="selected section" id="selection">
-      <div class="chapter">03 · Sélection historique</div>
+      <div class="chapter">04 · Expériences choisies</div>
       <div class="section-head">
-        <h2>Les projets qui racontent le parcours.</h2>
-        <p>Expériences professionnelles et projets CV, séparés des expérimentations personnelles présentées ensuite.</p>
+        <h2>La promesse, mise à l’épreuve du terrain.</h2>
+        <p>Des missions où comprendre les métiers, structurer les décisions et coordonner les acteurs a permis de rendre des systèmes complexes plus clairs.</p>
       </div>
       <div class="selected-grid">
         <article class="memory-project hero-memory magnet">
@@ -172,21 +230,30 @@
       </div>
     </section>
 
-    <section class="work section" id="work">
-      <div class="chapter">04 · Projets personnels</div>
+    <section class="journey section" id="parcours">
+      <div class="chapter">05 · Parcours</div>
       <div class="section-head">
-        <h2>Onze terrains d’essai. Aucun projet parasite.</h2>
-        <p>Une sélection de projets personnels orientés vers l’usage : veille, audit, apprentissage, organisation, finance, mobilité et interfaces utiles.</p>
+        <h2>Un parcours construit pour faire le lien.</h2>
+        <p>Chaque étape a renforcé ma capacité à dialoguer avec les métiers, les utilisateurs, les créatifs et les équipes techniques.</p>
+      </div>
+      <ol class="timeline">
+        <li><time>Août 2025 — présent</time><strong>Jalo Logistics · Abidjan</strong><span>Chef de Projet Digital & UX/UI Designer : e-Track, SOFTLOGIS V3.0, ERP IRIUM, COPIL, dashboards exécutifs.</span></li>
+        <li><time>Mai 2025 — déc. 2025</time><strong>Digitall Elevate · Cotonou</strong><span>Designer créatif consultant pour Zepargn : campagnes promotionnelles, pédagogiques et commerciales.</span></li>
+        <li><time>Mars 2023 — fév. 2025</time><strong>Sœkum / CQFF · Cotonou</strong><span>Directeur artistique consultant : CDCRB, Africaine Vie Bénin, The Busy Bee School.</span></li>
+        <li><time>Jan. 2022 — déc. 2023</time><strong>Trellix.io · Cotonou</strong><span>Product Designer pour Le Petit Nokoué : audits UX, tests, rapports et design system.</span></li>
+        <li><time>Juil. — nov. 2021</time><strong>Lyz Digital · Cotonou</strong><span>Premières intégrations frontend : HTML, CSS, JavaScript, responsive et fidélité visuelle.</span></li>
+      </ol>
+    </section>
+
+    <section class="lab section" id="lab">
+      <div class="chapter">06 · Laboratoire</div>
+      <div class="archive-head">
+        <p class="tiny">Projets personnels</p>
+        <h3>Le terrain où les idées deviennent des interfaces.</h3>
+        <p>Des terrains d’essai autour de l’audit, de l’apprentissage, de l’organisation, de la mobilité et des usages quotidiens.</p>
       </div>
       <div class="work-grid">
-        <a class="work-card hero-work" href="https://pulse.bookemrick.online/" target="_blank" rel="noopener noreferrer">
-          <div class="visual pulse"></div>
-          <span>Veille · innovation africaine</span>
-          <h3>Africa Digital Pulse</h3>
-          <p>Un espace éditorial pour rendre visibles des signaux, idées et initiatives liées au digital africain.</p>
-          <b>Ouvrir le projet ↗</b>
-        </a>
-        <a class="work-card blue" href="https://lens.bookemrick.online/" target="_blank" rel="noopener noreferrer"><div class="visual lens"></div><span>Audit · portfolio</span><h3>PortfolioLens</h3><p>Une idée d’outil pour analyser, clarifier et challenger la présentation d’un portfolio.</p><b>Ouvrir le projet ↗</b></a>
+        <a class="work-card hero-work blue" href="https://lens.bookemrick.online/" target="_blank" rel="noopener noreferrer"><div class="visual lens"></div><span>Audit · portfolio</span><h3>PortfolioLens</h3><p>Une idée d’outil pour analyser, clarifier et challenger la présentation d’un portfolio.</p><b>Ouvrir le projet ↗</b></a>
         <a class="work-card green" href="https://l-odyss-e-du-code.vercel.app/" target="_blank" rel="noopener noreferrer"><div class="visual odyssey"></div><span>Learning game</span><h3>L’Odyssée du Code</h3><p>Un projet autour de l’apprentissage du code par progression, interaction et narration.</p><b>Ouvrir le projet ↗</b></a>
         <a class="work-card pink" href="https://rico-cms.github.io/Habi-the-cohousing-app/" target="_blank" rel="noopener noreferrer"><div class="visual habi"></div><span>Habitat · communauté</span><h3>Habi</h3><p>Un concept d’application autour du cohousing, de la vie partagée et de la coordination.</p><b>Ouvrir le projet ↗</b></a>
         <a class="work-card purple" href="https://rico-cms.github.io/WorkweekOS/" target="_blank" rel="noopener noreferrer"><div class="visual workweek"></div><span>Organisation · OS</span><h3>WorkweekOS</h3><p>Un système pensé pour structurer la semaine, les priorités et les routines de travail.</p><b>Ouvrir le projet ↗</b></a>
@@ -199,23 +266,8 @@
       </div>
     </section>
 
-    <section class="journey section" id="parcours">
-      <div class="chapter">05 · Parcours</div>
-      <div class="section-head">
-        <h2>Une trajectoire entre pilotage, produit et image.</h2>
-        <p>Un parcours qui relie design opérationnel, produit, pilotage digital et transformation métier.</p>
-      </div>
-      <ol class="timeline">
-        <li><time>Août 2025 — présent</time><strong>Jalo Logistics · Abidjan</strong><span>Chef de Projet Digital & UX/UI Designer : e-Track, SOFTLOGIS V3.0, ERP IRIUM, COPIL, dashboards exécutifs.</span></li>
-        <li><time>Mai 2025 — déc. 2025</time><strong>Digitall Elevate · Cotonou</strong><span>Designer créatif consultant pour Zepargn : campagnes promotionnelles, pédagogiques et commerciales.</span></li>
-        <li><time>Mars 2023 — fév. 2025</time><strong>Sœkum / CQFF · Cotonou</strong><span>Directeur artistique consultant : CDCRB, Africaine Vie Bénin, The Busy Bee School.</span></li>
-        <li><time>Jan. 2022 — déc. 2023</time><strong>Trellix.io · Cotonou</strong><span>Product Designer pour Le Petit Nokoué : audits UX, tests, rapports et design system.</span></li>
-        <li><time>Juil. — nov. 2021</time><strong>Lyz Digital · Cotonou</strong><span>Premières intégrations frontend : HTML, CSS, JavaScript, responsive et fidélité visuelle.</span></li>
-      </ol>
-    </section>
-
     <section class="credentials section" id="certifications">
-      <div class="chapter">06 · Apprendre encore</div>
+      <div class="chapter">07 · Apprendre encore</div>
       <div class="section-head">
         <h2>Certifications, outils et curiosité structurée.</h2>
         <p>Des acquis complémentaires en gestion de projet, product management, IA, marketing digital, design web et outils créatifs.</p>
@@ -234,7 +286,7 @@
       </div>
       <div class="contact-copy">
         <p class="tiny">Abidjan × Cotonou</p>
-        <h2>Un produit à clarifier, une équipe à aligner, une expérience à rendre plus évidente ?</h2>
+        <h2>Un besoin métier complexe à transformer en produit clair et livrable ?</h2>
         <div class="links">
           <a href="https://tally.so/r/mOWLJA" target="_blank" rel="noopener noreferrer">Réserver un créneau</a>
           <a href="mailto:dahissihogabriel@gmail.com">dahissihogabriel@gmail.com</a>
@@ -275,6 +327,6 @@
     </div>
   </section>
 
-  <script src="emrick-creative-framer.js" defer></script>
+  <script src="emrick-creative-framer.js?v=20261025c" defer></script>
 </body>
 </html>
