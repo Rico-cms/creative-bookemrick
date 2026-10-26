@@ -323,6 +323,8 @@ body.construction-v3.light-mode::before { background:radial-gradient(circle at v
 
   .construction-v3 .display-controls {
     margin:0;
+    grid-column:2;
+    grid-row:1;
   }
 
   .construction-v3 .topbar nav {
@@ -445,6 +447,26 @@ body.construction-v3.light-mode::before { background:radial-gradient(circle at v
 }
 
 @media (max-width:420px) {
+  .construction-v3 .topbar nav {
+    display:grid;
+    grid-template-columns:repeat(5,minmax(0,1fr));
+    width:100%;
+    gap:0;
+    overflow:visible;
+  }
+
+  .construction-v3 .topbar nav a {
+    min-width:0;
+    padding:.52rem .12rem;
+    font-size:.58rem;
+    text-align:center;
+    white-space:nowrap;
+  }
+
+  .construction-v3 .opening {
+    padding-top:8.5rem;
+  }
+
   .construction-v3 .logo {
     font-size:.88rem;
   }
@@ -469,5 +491,22 @@ body.construction-v3.light-mode::before { background:radial-gradient(circle at v
 
   .construction-v3 .hero-actions a {
     width:100%;
+  }
+
+  .construction-v3 .mini-chat {
+    right:.5rem;
+    bottom:.5rem;
+  }
+
+  .construction-v3 .chat-toggle {
+    width:52px;
+    height:52px;
+    border-width:2px;
+    box-shadow:4px 5px 0 var(--ink);
+  }
+
+  .construction-v3 .chat-toggle b {
+    inset:7px;
+    border-width:1px;
   }
 }
